@@ -1,0 +1,13 @@
+import { render, router } from "./lib";
+import AboutPage from "./pages/AboutPage";
+import HomePage from "./pages/HomePage";
+import NotFound from "./pages/NotFound";
+import ProjectDetail from "./pages/ProjectDetail";
+import ProjectPage from "./pages/ProjectPage";
+const app = document.getElementById("app");
+router.on("/", () => render(HomePage, app));
+router.on("/project", () => render(ProjectPage, app));
+router.on("/project/:id", ({ data }) => render(() => ProjectDetail(data), app));
+router.on("/about", () => render(AboutPage, app));
+router.notFound(() => render(NotFound, app));
+router.resolve();
